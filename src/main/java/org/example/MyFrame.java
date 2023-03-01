@@ -20,7 +20,7 @@ public class MyFrame extends JFrame {
         // set the size of the frame and make it visible
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation(dim.width / 3 - this.getSize().width / 2, dim.height / 4 - this.getSize().height / 2);
-        setSize(350, 350);
+        setSize(335, 270);
 
         // set the title of the frame
         setTitle("Track Parts Finder For Goons");
@@ -28,14 +28,14 @@ public class MyFrame extends JFrame {
 
         // create a text field for the user to enter the search query
         textField = new JTextField();
-        textField.setPreferredSize(new Dimension(200, 50));
-        textField.setFont(new Font("Consolas",Font.PLAIN,18));
+        textField.setPreferredSize(new Dimension(200, 100));
+        textField.setFont(new Font("Consolas",Font.PLAIN,28));
         textField.setBackground(Color.darkGray);
         textField.setForeground(Color.WHITE);
         textField.setCaretColor(Color.GREEN);
         textField.setToolTipText("Hey Goon! No special characters allowed here, It breaks shit.");
         // add empty border to the left of the textField to position it to the right
-        textField.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 0));
+        textField.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
         add(textField, BorderLayout.NORTH);
 
         // create a URLButton to generate the search queries
@@ -94,7 +94,7 @@ public class MyFrame extends JFrame {
         // add an action listener to the URLButton
         URLButton.addActionListener(e -> {
             if (textField.getText().isEmpty()) { // check if the text field is empty
-                JOptionPane.showMessageDialog(this, "Enter A Search Query First");
+                JOptionPane.showMessageDialog(this, "Text box is feeling lonely.");
                 return;
             }
             // generate and display search queries //dataSets
@@ -117,7 +117,7 @@ public class MyFrame extends JFrame {
                 latestQuery = dataSetSEA.generateQueries(); // store the latest query generated
             }
             if (!europeCheckbox.isSelected() && !northAmericaCheckbox.isSelected() && !southeastAsiaCheckbox.isSelected()) {
-                JOptionPane.showMessageDialog(this, "You need to pick a region");
+                JOptionPane.showMessageDialog(this, "Pick A Region Before You Search.");
             }
 
             latestLinks = Arrays.asList(latestQuery.split("\n")); // get the links from the latest query
