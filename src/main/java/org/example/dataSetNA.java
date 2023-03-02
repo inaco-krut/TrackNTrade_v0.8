@@ -17,7 +17,6 @@ public class dataSetNA {
         queries.append(ebayQuery.replace(" ","+")).append("\n");
         queries.append(amazonQuery.replace(" ","+")).append("\n");
 
-        System.out.println(queries);
 
         return queries.toString();
 

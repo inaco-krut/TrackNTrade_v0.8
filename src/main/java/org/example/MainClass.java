@@ -11,34 +11,33 @@ import java.util.List;
 import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 
-public class MyFrame extends JFrame {
+public class MainClass extends JFrame {
+
     private final JTextField textField;
     private List<String> latestLinks; // added variable to store latest links
     private String latestQuery; // added variable to store latest query
-    public MyFrame() {
 
-        // set the size of the frame and make it visible
+
+    public MainClass() {
+
+        // main frame settings
+        setTitle("Track Parts Finder For Goons");
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation(dim.width / 3 - this.getSize().width / 2, dim.height / 4 - this.getSize().height / 2);
         setSize(335, 270);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // set the title of the frame
-        setTitle("Track Parts Finder For Goons");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // add this line to exit the entire program when JFrame is closed
-
-        // create a text field for the user to enter the search query
+        // TextField Settings
         textField = new JTextField();
-        textField.setPreferredSize(new Dimension(200, 100));
+        textField.setPreferredSize(new Dimension(200, 60));
         textField.setFont(new Font("Consolas",Font.PLAIN,28));
         textField.setBackground(Color.darkGray);
         textField.setForeground(Color.WHITE);
         textField.setCaretColor(Color.GREEN);
         textField.setToolTipText("Hey Goon! No special characters allowed here, It breaks shit.");
-        // add empty border to the left of the textField to position it to the right
         textField.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
-        add(textField, BorderLayout.NORTH);
 
-        // create a URLButton to generate the search queries
+        // URLButton settings
         JButton URLButton = new JButton("Click Here Or Press Enter");
         JButton openAllLinks = new JButton("Click Here To Open All Links In Browser");
         URLButton.setFont(new Font("Consolas",Font.PLAIN,20));
@@ -46,29 +45,27 @@ public class MyFrame extends JFrame {
         URLButton.setForeground(Color.WHITE);
         openAllLinks.setBackground(Color.black);
         openAllLinks.setForeground(Color.WHITE);
-        //URLButton.setSize(350,400);
 
-        // Create checkboxes
-        JRadioButton europeCheckbox = new JRadioButton("Europe");
-        JRadioButton northAmericaCheckbox = new JRadioButton("North America");
-        JRadioButton southeastAsiaCheckbox = new JRadioButton("Southeast Asia");
-
-        // Add checkboxes to a button group
-        ButtonGroup buttonGroup = new ButtonGroup();
-        buttonGroup.add(europeCheckbox);
-        buttonGroup.add(northAmericaCheckbox);
-        buttonGroup.add(southeastAsiaCheckbox);
-
+        // RadioButton settings
+        JRadioButton europeRadioButton = new JRadioButton("Europe");
+        JRadioButton northAmericaRadioButton = new JRadioButton("North America");
+        JRadioButton southEastAsiaRadioButton = new JRadioButton("Southeast Asia");
+        JRadioButton FaceBookEuropeRadioButton = new JRadioButton("Facebook EU");
         JPanel CheckBoxPanel = new JPanel();
-        CheckBoxPanel.add(europeCheckbox);
-        CheckBoxPanel.add(northAmericaCheckbox);
-        CheckBoxPanel.add(southeastAsiaCheckbox);
+        CheckBoxPanel.add(europeRadioButton);
+        CheckBoxPanel.add(northAmericaRadioButton);
+        CheckBoxPanel.add(southEastAsiaRadioButton);
+        CheckBoxPanel.add(FaceBookEuropeRadioButton);
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(europeRadioButton);
+        buttonGroup.add(northAmericaRadioButton);
+        buttonGroup.add(southEastAsiaRadioButton);
+        buttonGroup.add(FaceBookEuropeRadioButton);
 
-        // add the components to the content pane
+        // add components to the main frame
         add(textField, BorderLayout.NORTH);
         add(URLButton, BorderLayout.CENTER);
         add(CheckBoxPanel, BorderLayout.SOUTH);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
         // add a key listener to the text field to listen for the Enter key
@@ -97,30 +94,35 @@ public class MyFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, "Text box is feeling lonely.");
                 return;
             }
-            // generate and display search queries //dataSets
+
+            // generate and display search queries // dataSets
             String input = textField.getText();
             dataSetEurope dataSetEurope = new dataSetEurope(input);
             dataSetNA dataSetNA = new dataSetNA(input);
             dataSetSEA dataSetSEA = new dataSetSEA(input);
+            dataSetFBEU dataSetFBEU = new dataSetFBEU(input);
 
-
-            if (europeCheckbox.isSelected()) {
+            if (europeRadioButton.isSelected()) {
                 System.out.println("Europe checkbox selected.");
-                latestQuery = dataSetEurope.generateQueries(); // store the latest query generated
+                latestQuery = dataSetEurope.generateQueries();
             }
-            if (northAmericaCheckbox.isSelected()) {
+            if (northAmericaRadioButton.isSelected()) {
                 System.out.println("North America checkbox selected.");
-                latestQuery = dataSetNA.generateQueries(); // store the latest query generated
+                latestQuery = dataSetNA.generateQueries();
             }
-            if (southeastAsiaCheckbox.isSelected()) {
+            if (southEastAsiaRadioButton.isSelected()) {
                 System.out.println("Southeast Asia checkbox selected.");
-                latestQuery = dataSetSEA.generateQueries(); // store the latest query generated
+                latestQuery = dataSetSEA.generateQueries();
             }
-            if (!europeCheckbox.isSelected() && !northAmericaCheckbox.isSelected() && !southeastAsiaCheckbox.isSelected()) {
+            if (FaceBookEuropeRadioButton.isSelected()) {
+                System.out.println("Facebook Europe checkbox selected.");
+                latestQuery = dataSetFBEU.generateQueries();
+            }
+            if (!europeRadioButton.isSelected() && !northAmericaRadioButton.isSelected() && !southEastAsiaRadioButton.isSelected() && !FaceBookEuropeRadioButton.isSelected()) {
                 JOptionPane.showMessageDialog(this, "Pick A Region Before You Search.");
             }
 
-            latestLinks = Arrays.asList(latestQuery.split("\n")); // get the links from the latest query
+            latestLinks = Arrays.asList(latestQuery.split("\n"));
 
             // create a new frame to display the search queries
             JFrame f = new JFrame("Search Queries");
@@ -128,6 +130,7 @@ public class MyFrame extends JFrame {
             f.setLocation(dim1.width / 4 - f.getSize().width / 2, dim1.height / 4 - f.getSize().height / 2);
             f.setSize(300, 350);
             f.add(openAllLinks, BorderLayout.NORTH);
+            f.setVisible(true);
 
             // create a text area to display the search queries as HTML
             JEditorPane outputTextArea = new JEditorPane();
@@ -149,12 +152,7 @@ public class MyFrame extends JFrame {
             // add the text area to the frame
             f.add(new JScrollPane(outputTextArea));
 
-            // set the frame to be visible
-            f.setVisible(true);
-
         });
-
-        setVisible(true);
 
         // add an action listener to the openAllLinks button
         openAllLinks.addActionListener(e2 -> {

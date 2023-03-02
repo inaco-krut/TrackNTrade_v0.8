@@ -17,7 +17,6 @@ public class dataSetSEA {
         queries.append(carousellQuery.replace(" ","+%20")).append("\n");
 
 
-        System.out.println(queries);
 
         return queries.toString();
 
