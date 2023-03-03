@@ -61,6 +61,8 @@ public class LoginScreen extends JDialog implements ActionListener {
 
         // add action listeners
         loginButton.addActionListener(this);
+        JRootPane rootPane = SwingUtilities.getRootPane(loginButton);
+        rootPane.setDefaultButton(loginButton);
 
         // set dialog properties
         setSize(400, 200);
@@ -70,14 +72,22 @@ public class LoginScreen extends JDialog implements ActionListener {
         setVisible(true);
     }
 
+    ActionListener enterKeyListener = new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            loginButton.doClick();
+        }
+    };
+
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginButton) {
+
             String username = usernameField.getText();
             String password = new String(passwordField.getPassword());
 
             // check username and password
             String[] acceptedPasswords = {"fqwerty", "dwolive", "rnspice", "ajetreat", "eajelly"};
             boolean validPassword = false;
+
             for (String acceptedPassword : acceptedPasswords) {
                 if (password.equals(acceptedPassword)) {
                     validPassword = true;
@@ -94,20 +104,19 @@ public class LoginScreen extends JDialog implements ActionListener {
         }
     }
 
-
     public boolean isLoggedIn() {
         return loggedIn;
+
     }
 
     public static void main(String[] args) {
         LoginScreen loginScreen = new LoginScreen(null);
 
-        if (loginScreen.isLoggedIn()) {
-            // create and show main program window here
-        } else {
+        if (!loginScreen.isLoggedIn()) {
+
             // exit the program if login fails
             System.exit(0);
 
-        }
+        }  // create and show main program window here
     }
 }

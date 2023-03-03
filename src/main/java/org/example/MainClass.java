@@ -24,6 +24,7 @@ public class MainClass extends JFrame {
 
         // main frame settings
         setTitle("Track Parts Finder For Goons");
+
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation(dim.width / 3 - this.getSize().width / 2, dim.height / 4 - this.getSize().height / 2);
         setSize(420, 270);

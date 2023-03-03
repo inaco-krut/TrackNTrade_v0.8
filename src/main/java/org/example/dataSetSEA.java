@@ -14,7 +14,7 @@ public class dataSetSEA {
 
         String carousellQuery = "https://www.carousell.com.hk/search/"+input+"?addRecent=true&canChangeKeyword=true&includeSuggestions=true&searchId=KXpPzI";
 
-        queries.append(carousellQuery.replace(" ","+%20")).append("\n");
+        queries.append(carousellQuery.replace(" ","%20")).append("\n");
 
 
 

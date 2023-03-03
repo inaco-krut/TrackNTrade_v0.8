@@ -19,7 +19,7 @@ public class dataSetEurope {
         String ebayKleinanzeigenQuery = "https://www.ebay-kleinanzeigen.de/s-"+input+"/k0";
         String marktplaatsQuery = "https://www.marktplaats.nl/q/"+input+"/";
         String bikemarktQuery = "https://bikemarkt.mtb-news.de/search/"+input;
-        String trocVeloQuery = "https://www.troc-velo.com/fr-fr/recherche?_=%22"+input+"%22&filters=%7B%22terms%22%3A%22"+input+"%22%7D";
+        String trocVeloQuery = "https://www.troc-velo.com/fr-fr/recherche?search="+input;
         String willhabenQuery = "https://www.willhaben.at/iad/kaufen-und-verkaufen/marktplatz?sfId=fe973a99-b481-431b-ab14-dcb3bbb3af03&isNavigation=true&keyword="+input;
         String ricardoQuery = "https://www.ricardo.ch/de/s/"+input+"/";
         String blocketQuery = "https://www.blocket.se/annonser/hela_sverige?q="+input;
