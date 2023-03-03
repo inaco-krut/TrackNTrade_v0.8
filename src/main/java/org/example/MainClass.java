@@ -20,12 +20,15 @@ public class MainClass extends JFrame {
 
     public MainClass() {
 
+        LoginScreen login = new LoginScreen(null);
+
         // main frame settings
         setTitle("Track Parts Finder For Goons");
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation(dim.width / 3 - this.getSize().width / 2, dim.height / 4 - this.getSize().height / 2);
-        setSize(335, 270);
+        setSize(420, 270);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
         // TextField Settings
         textField = new JTextField();
