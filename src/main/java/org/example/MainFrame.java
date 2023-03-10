@@ -11,16 +11,16 @@ import java.util.List;
 import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 
-public class MainClass extends JFrame {
+public class MainFrame extends JFrame {
 
     private final JTextField textField;
     private List<String> latestLinks; // added variable to store latest links
     private String latestQuery; // added variable to store latest query
 
 
-    public MainClass() {
+    public MainFrame() {
 
-        LoginScreen login = new LoginScreen(null);
+        //LoginScreen login = new LoginScreen(null);
 
         // main frame settings
         setTitle("Track Parts Finder For Goons");

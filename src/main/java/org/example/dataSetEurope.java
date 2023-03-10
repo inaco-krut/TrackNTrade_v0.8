@@ -25,6 +25,7 @@ public class dataSetEurope {
         String blocketQuery = "https://www.blocket.se/annonser/hela_sverige?q="+input;
         String traderaQuery = "https://www.tradera.com/search?q="+input;
         String happyRideQuery = "https://happyride.se/annonser/list.php?search="+input+"&category=&county=&creator=&type=";
+        String lebonCOinQuery = "https://www.leboncoin.fr/recherche?text="+input;
 
 
         queries.append(dbaQuery.replace(" ","+")).append("\n");
@@ -41,7 +42,7 @@ public class dataSetEurope {
         queries.append(blocketQuery.replace(" ", "+")).append("\n");
         queries.append(traderaQuery.replace(" ", "%20")).append("\n");
         queries.append(happyRideQuery.replace(" ", "+")).append("\n");
-
+        queries.append(lebonCOinQuery.replace(" ","%20")).append("\n");
 
         return queries.toString();
 
