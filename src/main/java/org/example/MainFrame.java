@@ -13,6 +13,8 @@ import java.util.Set;
 import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 
+import static java.awt.Color.WHITE;
+
 public class MainFrame extends JFrame {
     private final JTextField textField;
     private List<String> latestLinks;
@@ -31,7 +33,7 @@ public class MainFrame extends JFrame {
         textField.setPreferredSize(new Dimension(200, 60));
         textField.setFont(new Font("Consolas", Font.PLAIN, 28));
         textField.setBackground(Color.darkGray);
-        textField.setForeground(Color.WHITE);
+        textField.setForeground(WHITE);
         textField.setCaretColor(Color.GREEN);
         textField.setToolTipText("Hey Goon! No special characters allowed here, It breaks shit.");
         textField.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
@@ -40,11 +42,11 @@ public class MainFrame extends JFrame {
         JButton openAllLinks = new JButton("Click Here To Open All Links In Browser");
         URLButton.setFont(new Font("Consolas", Font.PLAIN, 20));
         URLButton.setBackground(Color.black);
-        URLButton.setForeground(Color.WHITE);
+        URLButton.setForeground(WHITE);
         URLButton.setOpaque(true); // mac setting
         URLButton.setBorderPainted(false); // mac setting
         openAllLinks.setBackground(Color.black);
-        openAllLinks.setForeground(Color.WHITE);
+        openAllLinks.setForeground(WHITE);
 
         JRadioButton europeRadioButton = new JRadioButton("Europe");
         JRadioButton northAmericaRadioButton = new JRadioButton("North America");
@@ -125,14 +127,18 @@ public class MainFrame extends JFrame {
             int newFrameX = getLocation().x - searchFrame.getWidth() - 355; // Adjusted to move 10 pixels to the right
             int newFrameY = getLocation().y;
             searchFrame.setLocation(newFrameX, newFrameY); // Position to the left of the main window
-            searchFrame.setSize(350, 480);
+            searchFrame.setSize(350, 540);
             searchFrame.add(openAllLinks, BorderLayout.NORTH);
             searchFrame.setVisible(true);
+
 
             JEditorPane outputTextArea = new JEditorPane();
             outputTextArea.setEditable(false);
             outputTextArea.setContentType("text/html");
             outputTextArea.setText(getHtmlLinks(latestQuery, textField.getText()));
+
+            outputTextArea.setBackground(new Color(34, 40, 49));
+            outputTextArea.setForeground(WHITE);
 
             outputTextArea.addHyperlinkListener(e1 -> {
                 if (e1.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
@@ -164,6 +170,9 @@ public class MainFrame extends JFrame {
             return "";
         }
 
+        // Start with a base HTML style
+        html.append("<html><body style='color: white; font-family: Segoe UI, Arial, sans-serif; font-size: 12px; font-weight: bold;'>");
+
         Set<String> europeanCapitals = new HashSet<>(Arrays.asList(
                 "Amsterdam", "Andorra la Vella", "Athens", "Belgrade", "Berlin",
                 "Bratislava", "Brussels", "Bucharest", "Budapest", "Chisinau",
@@ -190,56 +199,65 @@ public class MainFrame extends JFrame {
                         if (path != null) {
                             for (String capital : europeanCapitals) {
                                 if (path.toLowerCase().contains(capital.toLowerCase())) {
-                                    displayText = "Facebook.com - " + capital;
+                                    displayText = "Facebook - " + capital;
                                     break;
                                 }
                             }
                         }
                     }
 
-                    String country = "";
-                    if (domain.endsWith(".se")) {
-                        country = " - Sweden";
-                    } else if (domain.endsWith(".uk")) {
-                        country = " - United Kingdom";
-                    } else if (domain.endsWith(".de")) {
-                        country = " - Germany";
-                    } else if (domain.endsWith(".dk")) {
-                        country = " - Denmark";
-                    } else if (domain.endsWith(".fr")) {
-                        country = " - France";
-                    } else if (domain.endsWith(".no")) {
-                        country = " - Norway";
-                    } else if (domain.endsWith(".fi")) {
-                        country = " - Finland";
-                    } else if (domain.endsWith(".nl")) {
-                        country = " - Netherlands";
-                    } else if (domain.endsWith(".at")) {
-                        country = " - Austria";
-                    } else if (domain.endsWith(".hr")) {
-                        country = " - Croatia";
-                    } else if (domain.endsWith(".pl")) {
-                        country = " - Poland";
-                    } else if (domain.endsWith(".pt")) {
-                        country = " - Portugal";
-                    } else if (domain.endsWith(".ua")) {
-                        country = " - Ukraine";
-                    } else if (domain.endsWith(".bg")) {
-                        country = " - Bulgaria";
-                    } else if (domain.endsWith(".ch")) {
-                        country = " - Switzerland";
-                    }
+                    String country = getString(domain);
 
-                    html.append("<a href=\"").append(link).append("\" style=\"color: blue; font-family: Helvetica; font-weight: normal;\">")
+                    // Apply white color style to the link text and remove underline
+                    html.append("<a href=\"").append(link)
+                            .append("\" style=\"color: white; text-decoration: none; font-family: Segoe UI, Arial, sans-serif; font-weight: 500;\">")
                             .append(displayText).append(country)
-                            .append("</a> ")
-                            .append(userInput)
-                            .append("<br>");
+                            .append("</a><br>");
                 }
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }
         }
+
+        // Close the HTML body
+        html.append("</body></html>");
+
         return html.toString();
+    }
+
+    private static String getString(String domain) {
+        String country = "";
+        if (domain.endsWith(".se")) {
+            country = " - Sweden";
+        } else if (domain.endsWith(".uk")) {
+            country = " - United Kingdom";
+        } else if (domain.endsWith(".de")) {
+            country = " - Germany";
+        } else if (domain.endsWith(".dk")) {
+            country = " - Denmark";
+        } else if (domain.endsWith(".fr")) {
+            country = " - France";
+        } else if (domain.endsWith(".no")) {
+            country = " - Norway";
+        } else if (domain.endsWith(".fi")) {
+            country = " - Finland";
+        } else if (domain.endsWith(".nl")) {
+            country = " - Netherlands";
+        } else if (domain.endsWith(".at")) {
+            country = " - Austria";
+        } else if (domain.endsWith(".hr")) {
+            country = " - Croatia";
+        } else if (domain.endsWith(".pl")) {
+            country = " - Poland";
+        } else if (domain.endsWith(".pt")) {
+            country = " - Portugal";
+        } else if (domain.endsWith(".ua")) {
+            country = " - Ukraine";
+        } else if (domain.endsWith(".bg")) {
+            country = " - Bulgaria";
+        } else if (domain.endsWith(".ch")) {
+            country = " - Switzerland";
+        }
+        return country;
     }
 }
