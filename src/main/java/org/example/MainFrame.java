@@ -173,7 +173,7 @@ public class MainFrame extends JFrame {
                 "Podgorica", "Prague", "Reykjavik", "Rome", "San Marino",
                 "Sarajevo", "Skopje", "Sofia", "Stockholm", "Tallinn",
                 "Tbilisi", "Tirana", "Vaduz", "Valletta", "Vatican City",
-                "Vienna", "Vilnius", "Warsaw", "Zagreb", "Zurich", "dublin", "riga"
+                "Vienna", "Vilnius", "Warsaw", "Zagreb", "Zurich", "Dublin", "Riga"
         ));
 
         String[] links = queries.split("\n");

@@ -9,8 +9,6 @@ public class dataSetEurope {
 
     public String generateQueries() {
 
-        StringBuilder queries = new StringBuilder();
-
         String dbaQuery = "https://www.dba.dk/cykler/?soeg="+input;
         String mercariQuery = "https://www.mercari.com/search/?keyword="+input;
         String wallapopQuery = "https://uk.wallapop.com/app/search?keywords="+input+"&filters_source=search_box&latitude=51.509865&longitude=-0.118092";
@@ -22,7 +20,7 @@ public class dataSetEurope {
         String willhabenQuery = "https://www.willhaben.at/iad/kaufen-und-verkaufen/marktplatz/fahrraeder-radsport-4525?sfId=c1892adb-f149-4fd1-9e83-f185016b0fef&rows=30&isNavigation=true&keyword="+input;
         String ricardoQuery = "https://www.ricardo.ch/de/c/radsport-41950/"+input+"/";
         String happyRideQuery = "https://happyride.se/annonser/list.php?search="+input+"&category=&county=&creator=&type=";
-        String lebonCOinQuery = "https://www.leboncoin.fr/recherche?category=55&text="+input;
+        String lebonCOinQuery = "https://www.leboncoin.fr/recherche?text="+input+"&kst=k&pi=65acc10f-3035-481a-a0fa-03940b5b6d35";
         String njuskaloCroatiaQuery = "https://www.njuskalo.hr/search/?keywords="+input;
         String olxPolandQuery = "https://www.olx.pl/sport-hobby/rowery/q-"+input;
         String olxPortugalQuery = "https://www.olx.pt/desporto-e-lazer/bicicletas/q-"+input;
@@ -33,33 +31,26 @@ public class dataSetEurope {
         String ToriQuery = "https://www.tori.fi/recommerce/forsale/search?q="+input+"&sub_category=1.69.3963";
 
 
-
-
-        queries.append(dbaQuery.replace(" ","+")).append("\n");
-        queries.append(mercariQuery.replace(" ","%20")).append("\n");
-        queries.append(wallapopQuery.replace(" ", "%20")).append("\n");
-        queries.append(finnNoQuery.replace(" ", "+")).append("\n");
-        queries.append(ebayKleinanzeigenQuery.replace(" ", "-")).append("\n");
-        queries.append(marktplaatsQuery.replace(" ", "+")).append("\n");
-        queries.append(bikemarktQuery.replace(" ", "-")).append("\n");
-        queries.append(trocVeloQuery.replace(" ", "+")).append("\n");
-        queries.append(willhabenQuery.replace(" ", "%20")).append("\n");
-        queries.append(ricardoQuery.replace(" ", "%20")).append("\n");
-        queries.append(happyRideQuery.replace(" ", "+")).append("\n");
-        queries.append(lebonCOinQuery.replace(" ","%20")).append("\n");
-        queries.append(olxPolandQuery.replace(" ","%20")).append("\n");
-        queries.append(olxPortugalQuery.replace(" ","%20")).append("\n");
-        queries.append(olxUkraineQuery.replace(" ","%20")).append("\n");
-        queries.append(anibisQuery.replace(" ","%20")).append("\n");
-        queries.append(milanuciosQuery.replace(" ","%20")).append("\n");
-        queries.append(ToriQuery.replace(" ","%20")).append("\n");
-        queries.append(olxBulgariaQuery.replace(" ","%20")).append("\n");
-        queries.append(njuskaloCroatiaQuery.replace(" ","%20")).append("\n");
-
-
-
-
-        return queries.toString();
+        return dbaQuery.replace(" ", "+") + "\n" +
+                mercariQuery.replace(" ", "%20") + "\n" +
+                wallapopQuery.replace(" ", "%20") + "\n" +
+                finnNoQuery.replace(" ", "+") + "\n" +
+                ebayKleinanzeigenQuery.replace(" ", "-") + "\n" +
+                marktplaatsQuery.replace(" ", "+") + "\n" +
+                bikemarktQuery.replace(" ", "-") + "\n" +
+                trocVeloQuery.replace(" ", "+") + "\n" +
+                willhabenQuery.replace(" ", "%20") + "\n" +
+                ricardoQuery.replace(" ", "%20") + "\n" +
+                happyRideQuery.replace(" ", "+") + "\n" +
+                lebonCOinQuery.replace(" ", "%20") + "\n" +
+                olxPolandQuery.replace(" ", "%20") + "\n" +
+                olxPortugalQuery.replace(" ", "%20") + "\n" +
+                olxUkraineQuery.replace(" ", "%20") + "\n" +
+                anibisQuery.replace(" ", "%20") + "\n" +
+                milanuciosQuery.replace(" ", "%20") + "\n" +
+                ToriQuery.replace(" ", "%20") + "\n" +
+                olxBulgariaQuery.replace(" ", "%20") + "\n" +
+                njuskaloCroatiaQuery.replace(" ", "%20") + "\n";
 
     }
 }

@@ -9,16 +9,11 @@ public class dataSetSEA {
 
     public String generateQueries() {
 
-        StringBuilder queries = new StringBuilder();
-
 
         String carousellQuery = "https://www.carousell.com.hk/search/"+input+"?addRecent=true&canChangeKeyword=true&includeSuggestions=true&searchId=KXpPzI";
 
-        queries.append(carousellQuery.replace(" ","%20")).append("\n");
 
-
-
-        return queries.toString();
+        return carousellQuery.replace(" ", "%20") + "\n";
 
     }
 }

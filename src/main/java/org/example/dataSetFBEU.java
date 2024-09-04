@@ -9,8 +9,6 @@ public class dataSetFBEU {
 
     public String generateQueries() {
 
-        StringBuilder queries = new StringBuilder();
-
         String fbAustria = "https://www.facebook.com/marketplace/vienna/search?query="+input;
         String fbBelgium = "https://www.facebook.com/marketplace/brussels/search?query="+input;
         String fbBulgaria = "https://www.facebook.com/marketplace/sofia/search?query="+input;
@@ -34,30 +32,27 @@ public class dataSetFBEU {
         String fbSweden = "https://www.facebook.com/marketplace/stockholm/search?query="+input;
 
 
-        queries.append(fbAustria.replace(" ","%20")).append("\n");
-        queries.append(fbBelgium.replace(" ","%20")).append("\n");
-        queries.append(fbBulgaria.replace(" ","%20")).append("\n");
-        queries.append(fbCroatia.replace(" ","%20")).append("\n");
-        queries.append(fbCzechRepublic.replace(" ","%20")).append("\n");
-        queries.append(fbDenmark.replace(" ","%20")).append("\n");
-        queries.append(fbFinland.replace(" ","%20")).append("\n");
-        queries.append(fbFrance.replace(" ","%20")).append("\n");
-        queries.append(fbGermany.replace(" ","%20")).append("\n");
-        queries.append(fbGreece.replace(" ","%20")).append("\n");
-        queries.append(fbHungary.replace(" ","%20")).append("\n");
-        queries.append(fbIreland.replace(" ","%20")).append("\n");
-        queries.append(fbItaly.replace(" ","%20")).append("\n");
-        queries.append(fbLatvia.replace(" ","%20")).append("\n");
-        queries.append(fbLithuania.replace(" ","%20")).append("\n");
-        queries.append(fbNetherlands.replace(" ","%20")).append("\n");
-        queries.append(fbPoland.replace(" ","%20")).append("\n");
-        queries.append(fbPortugal.replace(" ","%20")).append("\n");
-        queries.append(fbRomania.replace(" ","%20")).append("\n");
-        queries.append(fbSpain.replace(" ","%20")).append("\n");
-        queries.append(fbSweden.replace(" ","%20")).append("\n");
-
-
-        return queries.toString();
+        return fbAustria.replace(" ", "%20") + "\n" +
+                fbBelgium.replace(" ", "%20") + "\n" +
+                fbBulgaria.replace(" ", "%20") + "\n" +
+                fbCroatia.replace(" ", "%20") + "\n" +
+                fbCzechRepublic.replace(" ", "%20") + "\n" +
+                fbDenmark.replace(" ", "%20") + "\n" +
+                fbFinland.replace(" ", "%20") + "\n" +
+                fbFrance.replace(" ", "%20") + "\n" +
+                fbGermany.replace(" ", "%20") + "\n" +
+                fbGreece.replace(" ", "%20") + "\n" +
+                fbHungary.replace(" ", "%20") + "\n" +
+                fbIreland.replace(" ", "%20") + "\n" +
+                fbItaly.replace(" ", "%20") + "\n" +
+                fbLatvia.replace(" ", "%20") + "\n" +
+                fbLithuania.replace(" ", "%20") + "\n" +
+                fbNetherlands.replace(" ", "%20") + "\n" +
+                fbPoland.replace(" ", "%20") + "\n" +
+                fbPortugal.replace(" ", "%20") + "\n" +
+                fbRomania.replace(" ", "%20") + "\n" +
+                fbSpain.replace(" ", "%20") + "\n" +
+                fbSweden.replace(" ", "%20") + "\n";
 
     }
 }
