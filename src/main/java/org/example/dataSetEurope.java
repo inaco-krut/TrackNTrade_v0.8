@@ -4,7 +4,7 @@ public class dataSetEurope {
     private final String input;
 
     public dataSetEurope(String input) {
-        this.input = input.toUpperCase();
+        this.input = input.toLowerCase();
     }
 
     public String generateQueries() {

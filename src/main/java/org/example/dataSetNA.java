@@ -4,7 +4,7 @@ public class dataSetNA {
     private final String input;
 
     public dataSetNA(String input) {
-        this.input = input.toUpperCase();
+        this.input = input.toLowerCase();
     }
 
     public String generateQueries() {
@@ -15,6 +15,7 @@ public class dataSetNA {
 
         return ebayQuery.replace(" ", "+") + "\n" +
                 amazonQuery.replace(" ", "+") + "\n";
+
 
     }
 }

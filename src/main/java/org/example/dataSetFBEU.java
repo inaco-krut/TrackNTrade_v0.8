@@ -4,7 +4,7 @@ public class dataSetFBEU {
     private final String input;
 
     public dataSetFBEU(String input) {
-        this.input = input.toUpperCase();
+        this.input = input.toLowerCase();
     }
 
     public String generateQueries() {
@@ -32,7 +32,7 @@ public class dataSetFBEU {
         String fbSweden = "https://www.facebook.com/marketplace/stockholm/search?query="+input;
 
 
-        return fbAustria.replace(" ", "%20") + "\n" +
+        return  fbAustria.replace(" ", "%20") + "\n" +
                 fbBelgium.replace(" ", "%20") + "\n" +
                 fbBulgaria.replace(" ", "%20") + "\n" +
                 fbCroatia.replace(" ", "%20") + "\n" +
