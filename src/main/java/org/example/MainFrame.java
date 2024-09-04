@@ -14,6 +14,7 @@ import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 
 import static java.awt.Color.WHITE;
+import static java.awt.Font.BOLD;
 
 public class MainFrame extends JFrame {
     private final JTextField textField;
@@ -22,7 +23,7 @@ public class MainFrame extends JFrame {
     private JFrame searchFrame; // Reference to the frame displaying the search queries
 
     public MainFrame() {
-        setTitle("Track Parts Finder For Goons");
+        setTitle("TrackNTrade");
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation(dim.width / 3 - this.getSize().width / 2, dim.height / 4 - this.getSize().height / 2);
@@ -36,10 +37,11 @@ public class MainFrame extends JFrame {
         textField.setForeground(WHITE);
         textField.setCaretColor(Color.GREEN);
         textField.setToolTipText("Hey Goon! No special characters allowed here, It breaks shit.");
-        textField.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
+        textField.setBorder(BorderFactory.createEmptyBorder(5, 10, 0, 0));
 
         JButton URLButton = new JButton("Click Here Or Press Enter");
-        JButton openAllLinks = new JButton("Click Here To Open All Links In Browser");
+        JButton openAllLinks = new JButton("[ Click Here to Open All Links ]");
+        openAllLinks.setFont(new Font("Consolas", BOLD, 14));
         URLButton.setFont(new Font("Consolas", Font.PLAIN, 20));
         URLButton.setBackground(Color.black);
         URLButton.setForeground(WHITE);
@@ -127,7 +129,8 @@ public class MainFrame extends JFrame {
             int newFrameX = getLocation().x - searchFrame.getWidth() - 355; // Adjusted to move 10 pixels to the right
             int newFrameY = getLocation().y;
             searchFrame.setLocation(newFrameX, newFrameY); // Position to the left of the main window
-            searchFrame.setSize(350, 540);
+            searchFrame.setSize(350, 535);
+            openAllLinks.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
             searchFrame.add(openAllLinks, BorderLayout.NORTH);
             searchFrame.setVisible(true);
 
@@ -210,7 +213,7 @@ public class MainFrame extends JFrame {
 
                     // Apply white color style to the link text and remove underline
                     html.append("<a href=\"").append(link)
-                            .append("\" style=\"color: white; text-decoration: none; font-family: Segoe UI, Arial, sans-serif; font-weight: 500;\">")
+                            .append("\" style=\"color: white; text-decoration: none; font-family: Segoe UI, Arial, sans-serif; font-weight: 400;\">")
                             .append(displayText).append(country)
                             .append("</a><br>");
                 }
@@ -257,6 +260,8 @@ public class MainFrame extends JFrame {
             country = " - Bulgaria";
         } else if (domain.endsWith(".ch")) {
             country = " - Switzerland";
+        } else if (domain.endsWith(".hk")) {
+            country = " - Hong Kong";
         }
         return country;
     }
