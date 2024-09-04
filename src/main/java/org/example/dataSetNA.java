@@ -4,7 +4,7 @@ public class dataSetNA {
     private final String input;
 
     public dataSetNA(String input) {
-        this.input = input.toLowerCase();
+        this.input = input;
     }
 
     public String generateQueries() {

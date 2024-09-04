@@ -4,7 +4,7 @@ public class dataSetFBEU {
     private final String input;
 
     public dataSetFBEU(String input) {
-        this.input = input.toLowerCase();
+        this.input = input;
     }
 
     public String generateQueries() {

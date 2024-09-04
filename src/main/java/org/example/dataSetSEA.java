@@ -4,7 +4,7 @@ public class dataSetSEA {
     private final String input;
 
     public dataSetSEA(String input) {
-        this.input = input.toUpperCase();
+        this.input = input;
     }
 
     public String generateQueries() {
