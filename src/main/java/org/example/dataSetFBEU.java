@@ -15,7 +15,7 @@ public class dataSetFBEU {
         String fbCroatia = "https://www.facebook.com/marketplace/zagreb/search?query="+input;
         String fbCzechRepublic = "https://www.facebook.com/marketplace/prague/search?query="+input;
         String fbDenmark = "https://www.facebook.com/marketplace/copenhagen/search?query="+input;
-                String fbFinland = "https://www.facebook.com/marketplace/helsinki/search?query="+input;
+        String fbFinland = "https://www.facebook.com/marketplace/helsinki/search?query="+input;
         String fbFrance = "https://www.facebook.com/marketplace/paris/search?query="+input;
         String fbGermany = "https://www.facebook.com/marketplace/berlin/search?query="+input;
         String fbGreece = "https://www.facebook.com/marketplace/athens/search?query="+input;
