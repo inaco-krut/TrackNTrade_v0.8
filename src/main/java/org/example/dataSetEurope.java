@@ -20,7 +20,7 @@ public class dataSetEurope {
         String willhabenQuery = "https://www.Willhaben.at/iad/kaufen-und-verkaufen/marktplatz/fahrraeder-radsport-4525?sfId=c1892adb-f149-4fd1-9e83-f185016b0fef&rows=30&isNavigation=true&keyword="+input;
         String ricardoQuery = "https://www.Ricardo.ch/de/c/radsport-41950/"+input+"/";
         String happyRideQuery = "https://Happyride.se/annonser/list.php?search="+input+"&category=&county=&creator=&type=";
-        String lebonCOinQuery = "https://www.Leboncoin.fr/recherche?text="+input+"&kst=k&pi=65acc10f-3035-481a-a0fa-03940b5b6d35";
+        String lebonCOinQuery = "https://www.leboncoin.fr/recherche?text="+input+"&kst=k";
         String njuskaloCroatiaQuery = "https://www.Njuskalo.hr/search/?keywords="+input;
         String olxPolandQuery = "https://www.Olx.pl/sport-hobby/rowery/q-"+input;
         String olxPortugalQuery = "https://www.Olx.pt/desporto-e-lazer/bicicletas/q-"+input;

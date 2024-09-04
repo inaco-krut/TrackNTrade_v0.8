@@ -49,6 +49,8 @@ public class MainFrame extends JFrame {
         URLButton.setBorderPainted(false); // mac setting
         openAllLinks.setBackground(Color.black);
         openAllLinks.setForeground(WHITE);
+        openAllLinks.setOpaque(true); // mac setting
+        openAllLinks.setBorderPainted(false); // mac setting
 
         JRadioButton europeRadioButton = new JRadioButton("Europe");
         JRadioButton northAmericaRadioButton = new JRadioButton("North America");
