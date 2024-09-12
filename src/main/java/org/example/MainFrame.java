@@ -28,7 +28,7 @@ public class MainFrame extends JFrame {
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation(dim.width / 3 - this.getSize().width / 2, dim.height / 4 - this.getSize().height / 2);
-        setSize(450, 270);
+        setSize(490, 270);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         textField = new JTextField();
@@ -129,7 +129,7 @@ public class MainFrame extends JFrame {
             searchFrame = new JFrame("Search Queries");
 
             // Calculate the new frame's position relative to the main window
-            int newFrameX = getLocation().x - searchFrame.getWidth() - 340; // Adjusted to move 10 pixels to the right
+            int newFrameX = getLocation().x - searchFrame.getWidth() - 355; // Adjusted to move 10 pixels to the right
             int newFrameY = getLocation().y;
             searchFrame.setLocation(newFrameX, newFrameY); // Position to the left of the main window
             searchFrame.setSize(350, 555);
